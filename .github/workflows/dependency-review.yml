@@ -1,41 +1,49 @@
-name: 'Dependency review and Pytest'
+name: Dependency Review and Pytest Tests
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 permissions:
   contents: read
   pull-requests: write
 
 jobs:
-  dependency-review:
+  dependency_review:
+    name: Dependency Review
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Pytest build
+      - name: Run Dependency Review Action
         uses: actions/dependency-review-action@v4
         with:
           comment-summary-in-pr: always
 
-  build: 
+  run_pytest:
+    name: Run Pytest Tests
     runs-on: ubuntu-latest
-    steps:
-      - name: Check out main branch
-        uses: actions/checkout@v2
+    defaults:
+      run:
+        working-directory: .
 
-      - name: Set up Python
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: "3.12"
 
-      - name: Install uv
+      - name: Install uv package manager
         run: pip install uv
 
-      - name: Install dependencies with uv
+      - name: Sync dependencies with uv
         run: uv sync
 
       - name: Run tests with pytest
+        env:
+          PYTHONPATH: src
         run: uv run pytest -v --maxfail=3 --disable-warnings --tb=short

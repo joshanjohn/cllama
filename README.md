@@ -2,6 +2,7 @@
 Cllama is a python streamlit webUI for using LLM models which are available in the ollama localy. 
 
 <img width="1295" alt="Screenshot 2025-06-21 at 19 30 28" src="https://github.com/user-attachments/assets/dec8d190-6208-4d5a-b19d-ec1f3aaf3f70" />
+<img width="1295" alt="Screenshot 2025-06-21 at 20 08 04" src="https://github.com/user-attachments/assets/6548e738-b9ee-4ffd-bca5-0eb9e51a1577" />
 
 
 # Installation Guide

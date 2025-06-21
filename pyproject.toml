@@ -33,4 +33,5 @@ Homepage = "https://github.com/joshanjohn/cllama"
 minversion = "6.0"
 addopts = "-ra -q"
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = [".", "src"]
+

@@ -29,3 +29,6 @@ classifiers = [
 
 [tool.poetry.dev-dependencies]  
 pytest = "^8.0"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

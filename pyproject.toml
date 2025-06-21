@@ -11,12 +11,14 @@ authors = [
 ]
 
 dependencies = [
+    "black>=25.1.0",
     "langchain>=0.3.26",
     "langchain-ollama>=0.3.3",
     "pytest>=8.4.1",
     "pytest-mock>=3.14.1",
     "python-dotenv>=1.1.0",
-    "streamlit>=1.46.0"
+    "ruff>=0.12.0",
+    "streamlit>=1.46.0",
 ]
 
 classifiers = [

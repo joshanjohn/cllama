@@ -1,4 +1,4 @@
-# Cllama [![Cllama Workflow](https://github.com/joshanjohn/cllama/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/joshanjohn/cllama/actions/workflows/dependency-review.yml)
+# 🤖Cllama [![Cllama Workflow](https://github.com/joshanjohn/cllama/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/joshanjohn/cllama/actions/workflows/dependency-review.yml)
 
 
 Cllama is a python streamlit webUI for using LLM models which are available in the ollama localy. 
@@ -36,3 +36,11 @@ Cllama is a python streamlit webUI for using LLM models which are available in t
 5. ## Runing cllama
   To run the cllama webUI project use this streamlit command from the base directory. 
 - `streamlit run src/main.py`
+
+# Contribution Guidelines
+   a) Create a task in the project planning board (CPPB) https://github.com/users/joshanjohn/projects/17 <br>
+   b) use proper branch name as github task suggest, which is hash number followed by task name seperated by hypen. (eg: 4-task-title) <br>
+   c) Submit a pull request (PR) before merging into main branch. <br>
+   d) Must get an PR approval review to merge. <br>
+
+**All The Best** 🙌🏻

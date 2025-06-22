@@ -1,4 +1,4 @@
-# Cllama [![Cllama Workflow](https://github.com/joshanjohn/cllama/actions/workflows/dependency-review.yml/badge.svg?branch=main)](https://github.com/joshanjohn/cllama/actions/workflows/dependency-review.yml)
+# Cllama [![Cllama Workflow](https://github.com/joshanjohn/cllama/actions/workflows/dependency-review.yml/badge.svg)](https://github.com/joshanjohn/cllama/actions/workflows/dependency-review.yml)
 
 
 Cllama is a python streamlit webUI for using LLM models which are available in the ollama localy. 

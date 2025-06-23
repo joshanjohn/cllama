@@ -52,4 +52,19 @@ Cllama is a python streamlit webUI for using LLM models which are available in t
    c) Submit a pull request (PR) before merging into main branch. <br>
    d) Must get an PR approval review to merge. <br>
 
+## Lint
+
+1. In your terminal, `cd` into the project root
+1. Run: `uv run ruff check`
+1. To apply safe automatic fix, run: `uv run ruff check --fix`.
+1. To apply unsafe automatic fix, run: `uv run ruff check --fix --unsafe-fixes`
+
+__You may need to run formatter `black .` again after running ruff auto fix.__
+
+
+## Format
+
+1. In your terminal, `cd` into the project root
+1. Run: `uv run black .`
+
 **All The Best** 🙌🏻

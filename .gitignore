@@ -1,2 +1,4 @@
 src/__pycache__/llm.cpython-312.pyc
 *.pyc
+*.pyc
+/src/llm/__pycache__

@@ -1,7 +1,6 @@
 import streamlit as st
 from utils.get_models import get_ollama_names
 from src.workflows.workflow import WorkFlow
-from src.llm.llm import LLM
 
 
 def update_model():

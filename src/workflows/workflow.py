@@ -8,5 +8,5 @@ class WorkFlow:
 
     def invoke(self, query: str):
         llm = LLM(model=self.llm_model)
-        response = LLM.run(query)
+        response = llm.run(query)
         return response

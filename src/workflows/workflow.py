@@ -1,0 +1,12 @@
+from src.llm.llm import LLM
+
+
+class WorkFlow:
+    def __init__(self, llm: str):
+        print("- Initializing workflow")
+        self.llm_model: str = llm
+
+    def invoke(self, query: str):
+        llm = LLM(model=self.llm_model)
+        response = LLM.run(query)
+        return response

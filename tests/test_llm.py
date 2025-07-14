@@ -1,6 +1,6 @@
 import pytest
 from langchain_ollama import ChatOllama
-from src.llm import LLM  # replace with actual module path
+from src.llm.llm import LLM  # replace with actual module path
 
 
 @pytest.fixture

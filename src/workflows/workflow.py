@@ -6,6 +6,7 @@ subjected to copyright@2025
 
 from src.llm.llm import LLM
 
+
 class WorkFlow:
     def __init__(self, llm: str):
         print("- Initializing workflow")

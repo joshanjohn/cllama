@@ -1,3 +1,9 @@
+"""
+Author: Joshan John
+contact: joshanjohn2003@gmail.com
+subjected to copyright@2025
+"""
+
 import pytest
 from src.llm.llm import LLM
 from langchain_ollama import ChatOllama

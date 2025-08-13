@@ -2,10 +2,10 @@ import logging
 import os
 
 # Ensure the log directory exists (create if missing)
-log_dir = os.path.join(os.path.dirname(__file__), '..', 'bins', 'logs')
+log_dir = os.path.join(os.path.dirname(__file__), "..", "bins", "logs")
 os.makedirs(log_dir, exist_ok=True)
 
-log_file = os.path.join(log_dir, 'app.log')
+log_file = os.path.join(log_dir, "app.log")
 
 # Create logger instance
 logger = logging.getLogger("cllama")
@@ -21,7 +21,7 @@ fh.setLevel(logging.DEBUG)
 
 # Formatter with filename and function name
 formatter = logging.Formatter(
-    '(%(name)s) [%(levelname)s] [%(asctime)s] [%(filename)s:%(funcName)s] %(message)s'
+    "(%(name)s) [%(levelname)s] [%(asctime)s] [%(filename)s:%(funcName)s] %(message)s"
 )
 
 # Set formatter for both handlers

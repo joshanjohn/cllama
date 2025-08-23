@@ -5,14 +5,19 @@ subjected to copyright@2025
 """
 
 from src.llm.llm import LLM
+from src.utils import logger
 
 
 class WorkFlow:
     def __init__(self, llm: str):
-        print("- Initializing workflow")
+
         self.llm_model: str = llm
 
     def invoke(self, query: str):
-        llm = LLM(model=self.llm_model)
-        response = llm.run(query)
+        try:
+            llm = LLM(model=self.llm_model)
+            logger.info("llm initialized..")
+        except Exception as e:
+            logger.info(str(e))
+        response = llm(query)
         return response

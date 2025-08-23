@@ -6,7 +6,11 @@ subjected to copyright@2025
 
 import streamlit as st
 from utils.get_models import get_ollama_names
-from src.workflows.workflow import WorkFlow
+from src.workflows import AgenticWorkflow
+from src.states import AgentState
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def update_model():
@@ -14,7 +18,24 @@ def update_model():
 
 
 def init_workflow(llm_model: str):
-    return WorkFlow(llm=llm_model)
+    return AgenticWorkflow(llm=llm_model)
+
+
+def run_workflow(workflow: AgenticWorkflow, query: str, messages: list) -> str:
+    """Run compiled workflow on user query and return assistant response."""
+    compiled = workflow.get_workflow()
+
+    # Convert chat history into AgentState
+    state: AgentState = {"messages": messages}
+
+    # Run graph with user query
+    result_state = compiled.invoke(state)
+
+    # Extract AI response from updated state
+    last_message = (
+        result_state["messages"][-1].content if result_state["messages"] else ""
+    )
+    return last_message
 
 
 def main():
@@ -27,6 +48,10 @@ def main():
 
     if "selected_model" not in st.session_state:
         st.session_state.selected_model = st.session_state.model
+
+    # Initialize workflow
+    if "workflow" not in st.session_state:
+        st.session_state.workflow = init_workflow(st.session_state.model)
 
     # Initialize chat history
     if "messages" not in st.session_state:
@@ -62,8 +87,11 @@ def main():
 
         # Process AI response
         with st.spinner("AI is typing..."):
-            workflow = init_workflow(st.session_state.model)
-            response = workflow.invoke(prompt)
+            response = run_workflow(
+                st.session_state.workflow,
+                prompt,
+                st.session_state.messages,
+            )
 
         # Show assistant response
         with st.chat_message("assistant"):
@@ -83,7 +111,7 @@ def main():
             z-index: 9999;
         }
         .footer-credit a {
-            color: yellow;
+            color: green;
             text-decoration: none;
             font-size: 14px;
         }

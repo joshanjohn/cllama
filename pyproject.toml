@@ -43,3 +43,7 @@ addopts = "-ra -q"
 testpaths = ["tests"]
 pythonpath = [".", "src"]
 
+
+[tool.ruff.lint]
+extend-ignore = ["F401"]
+per-file-ignores = { "__init__.py" = ["F401"] }

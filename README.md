@@ -5,8 +5,12 @@ Cllama is a python streamlit webUI for using LLM models which are available in t
 
 
 
-<img width="1295" alt="Screenshot 2025-06-21 at 19 30 28" src="https://github.com/user-attachments/assets/dec8d190-6208-4d5a-b19d-ec1f3aaf3f70" />
-<img width="1295" alt="Screenshot 2025-06-21 at 20 08 04" src="https://github.com/user-attachments/assets/6548e738-b9ee-4ffd-bca5-0eb9e51a1577" />
+<img width="1343" height="986" alt="Screenshot 2025-08-28 at 23 18 34" src="https://github.com/user-attachments/assets/5782bb9a-8fb0-4908-9cfb-1df6a528fcc1" />
+<img width="1343" height="986" alt="Screenshot 2025-08-28 at 23 19 51" src="https://github.com/user-attachments/assets/2aee9342-e4e2-48e1-aacb-980ba874a858" />
+
+# Features
+- Real Time weather information using tools.
+- Real Time weather alert using tools. 
 
 
 # Installation Guide
@@ -76,3 +80,4 @@ __You may need to run formatter `black .` again after running ruff auto fix.__
 1. Run: `uv run black .`
 
 **All The Best** 🙌🏻
+

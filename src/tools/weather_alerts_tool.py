@@ -13,7 +13,7 @@ def weather_alerts_tool(query: str) -> dict:
     url = f"{WEATHER_BASE_URL}alerts.json?key={WEATHER_API_KEY}&q={query}"
     logger.info(f"URL = {url}")
 
-    logger.info(f"calling weather alerts api tool...")
+    logger.info("calling weather alerts api tool...")
     data = requests.get(url=url)
     logger.info(f"fetched {query} weather information!")
 
@@ -23,4 +23,3 @@ def weather_alerts_tool(query: str) -> dict:
 
     logger.debug(f"DATA = {data.json()["alerts"]}")
     return data.json()
-

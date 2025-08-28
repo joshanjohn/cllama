@@ -20,9 +20,7 @@ def test_weather_alerts_tool_success(mock_logger, mock_requests_get):
     # Mock a successful API response
     mock_response = Mock()
     mock_response.status_code = 200
-    mock_response.json.return_value = {
-        "alerts": [{"title": "Storm warning"}]
-    }
+    mock_response.json.return_value = {"alerts": [{"title": "Storm warning"}]}
     mock_requests_get.return_value = mock_response
 
     query = "London"
@@ -31,9 +29,11 @@ def test_weather_alerts_tool_success(mock_logger, mock_requests_get):
     # Verify URL was constructed correctly
     expected_url = f"{WEATHER_BASE_URL}alerts.json?key={WEATHER_API_KEY}&q={query}"
     mock_logger.info.assert_any_call(f"URL = {expected_url}")
-    mock_logger.info.assert_any_call(f"calling weather alerts api tool...")
+    mock_logger.info.assert_any_call("calling weather alerts api tool...")
     mock_logger.info.assert_any_call(f"fetched {query} weather information!")
-    mock_logger.debug.assert_called_with(f"DATA = {mock_response.json.return_value['alerts']}")
+    mock_logger.debug.assert_called_with(
+        f"DATA = {mock_response.json.return_value['alerts']}"
+    )
 
     # Check returned data
     assert result == mock_response.json.return_value
@@ -55,7 +55,9 @@ def test_weather_alerts_tool_api_error(mock_logger, mock_requests_get):
 
 def test_weather_alerts_tool_empty_query():
     # Test that empty query raises ValueError
-    with pytest.raises(ValueError, match="No place name provided to current weather api tool."):
+    with pytest.raises(
+        ValueError, match="No place name provided to current weather api tool."
+    ):
         weather_alerts_tool.invoke("")
 
 

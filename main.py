@@ -16,23 +16,25 @@ with st.sidebar:
 
 # ---- MAIN CONTENT ----
 if selected == "Home":
-    st.markdown("<h2 style='text-align:center;'>Choose a Page</h2>", unsafe_allow_html=True)
+    st.markdown(
+        "<h2 style='text-align:center;'>Choose a Page</h2>", unsafe_allow_html=True
+    )
 
     cols = st.columns(4, gap="large")
 
     # Four cards in center
     with cols[0]:
         if st.button("Page 1", use_container_width=True):
-            st.session_state['selected'] = "Page 1"
+            st.session_state["selected"] = "Page 1"
     with cols[1]:
         if st.button("Page 2", use_container_width=True):
-            st.session_state['selected'] = "Page 2"
+            st.session_state["selected"] = "Page 2"
     with cols[2]:
         if st.button("Page 3", use_container_width=True):
-            st.session_state['selected'] = "Page 3"
+            st.session_state["selected"] = "Page 3"
     with cols[3]:
         if st.button("Page 4", use_container_width=True):
-            st.session_state['selected'] = "Page 4"
+            st.session_state["selected"] = "Page 4"
 
 elif selected == "Page 1":
     st.title("📘 Page 1")

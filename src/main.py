@@ -7,8 +7,7 @@ subjected to copyright@2025
 import streamlit as st
 from utils.get_models import get_ollama_names
 from src.workflows import Workflow
-from src.components import *
-from src.states import AgentState
+from src.components import sidebar
 from dotenv import load_dotenv
 
 load_dotenv()

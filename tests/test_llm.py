@@ -1,50 +1,49 @@
-"""
-Author: Joshan John
-contact: joshanjohn2003@gmail.com
-subjected to copyright@2025
-"""
-
 import pytest
-from src.llm.llm import LLM
-from langchain_ollama import ChatOllama
+from src.llm.llm import LLM  # import the actual module containing the class
 
 
 @pytest.fixture
 def mock_chatollama(mocker):
-    # Mock instance of ChatOllama
-    mock_instance = mocker.Mock(spec=ChatOllama)
-    mock_instance.invoke.return_value.content = "Mocked LLM response"
-    mock_instance.get_name.return_value = "mock_model"
-
-    # Patch ChatOllama in the LLM module path
-    mocker.patch("src.llm.llm.ChatOllama", return_value=mock_instance)
-    return mock_instance
+    return mocker.patch("src.llm.llm.ChatOllama")
 
 
-def test_llm_initialization_with_valid_model(mock_chatollama):
-    llm = LLM(model="llama2")
-    assert isinstance(llm.llm, ChatOllama)
-    mock_chatollama.get_name.assert_not_called()
+@pytest.fixture
+def mock_logger(mocker):
+    return mocker.patch("src.llm.llm.logger")
 
 
-def test_llm_initialization_without_model():
-    with pytest.raises(ValueError, match="Model name is required to load ChatOllama."):
-        LLM(model="")
+def test_get_llm_model_with_model_returns_chatollama(mock_chatollama, mock_logger):
+    llm_instance = LLM(model="test-model")
+    result = llm_instance.get_llm_model()
+    mock_logger.info.assert_called_once_with("LLM = test-model")
+    mock_chatollama.assert_called_once_with(model="test-model")
+    assert result == mock_chatollama.return_value
 
 
-def test_llm_run_with_valid_msg(mock_chatollama, capsys):
-    llm = LLM(model="llama2")
-    response = llm.run("Hello world")
-    assert response == "Mocked LLM response"
-    mock_chatollama.invoke.assert_called_once_with("Hello world")
-    mock_chatollama.get_name.assert_called_once()
-    captured = capsys.readouterr()
-    assert "mock_model" in captured.out
+def test_get_llm_model_without_model_raises(mock_logger):
+    llm_instance = LLM(model="")
+    with pytest.raises(ValueError):
+        llm_instance.get_llm_model()
+    mock_logger.error.assert_called_once_with(
+        "Model name is required to load ChatOllama."
+    )
 
 
-def test_llm_run_with_empty_msg(mock_chatollama):
-    llm = LLM(model="llama2")
-    response = llm.run("")
-    assert response == "Failed to generate LLM response"
-    mock_chatollama.invoke.assert_not_called()
-    mock_chatollama.get_name.assert_not_called()
+def test_call_with_empty_message_returns_error(mock_logger):
+    llm_instance = LLM(model="test-model")
+    result = llm_instance("")
+    assert result == "Failed to generate LLM response"
+    mock_logger.error.assert_called_once_with("Failed to generate LLM response")
+
+
+def test_call_with_valid_message(mock_chatollama, mock_logger):
+    mock_instance = mock_chatollama.return_value
+    mock_instance.invoke.return_value.content = "response"
+    mock_instance.get_name.return_value = "test-model"
+
+    llm_instance = LLM(model="test-model")
+    result = llm_instance("Hello")
+
+    mock_chatollama.assert_called_once_with(model="test-model")
+    mock_logger.debug.assert_called_once_with("Model test-model loaded ... ")
+    assert result == "response"

@@ -12,13 +12,19 @@ authors = [
 
 dependencies = [
     "black>=25.1.0",
+    "ddgs>=9.5.2",
+    "duckduckgo-search>=8.1.1",
     "langchain>=0.3.26",
+    "langchain-community>=0.3.27",
     "langchain-ollama>=0.3.3",
+    "langchain-tavily>=0.2.11",
+    "langgraph>=0.6.4",
     "pytest>=8.4.1",
     "pytest-mock>=3.14.1",
     "python-dotenv>=1.1.0",
     "ruff>=0.12.0",
     "streamlit>=1.46.0",
+    "streamlit-option-menu>=0.4.0",
 ]
 
 classifiers = [
@@ -37,3 +43,7 @@ addopts = "-ra -q"
 testpaths = ["tests"]
 pythonpath = [".", "src"]
 
+
+[tool.ruff.lint]
+extend-ignore = ["F401"]
+per-file-ignores = { "__init__.py" = ["F401"] }

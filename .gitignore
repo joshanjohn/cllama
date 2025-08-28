@@ -1,4 +1,16 @@
-*.pyc
+# ---------------------------
+# Python
+# ---------------------------
 __pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
 .env
-/src/utils/__pycache__
+

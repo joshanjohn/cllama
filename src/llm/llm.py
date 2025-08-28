@@ -14,7 +14,9 @@ class LLM:
 
     def get_llm_model(self) -> ChatOllama:
         if not self.model:
+            logger.error("Model name is required to load ChatOllama.")
             raise ValueError("Model name is required to load ChatOllama.")
+        logger.info(f"LLM = {self.model}")
         return ChatOllama(model=self.model)
 
     def __call__(self, msg: str) -> str:

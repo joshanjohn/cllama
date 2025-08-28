@@ -5,3 +5,4 @@ from langgraph.graph import add_messages
 
 class AgentState(TypedDict):
     messages: Annotated[List[BaseMessage], add_messages]
+    weather_data: dict
